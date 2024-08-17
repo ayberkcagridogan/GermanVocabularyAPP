@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import DeckManagement  from './pages/cardmanagement/DeckManagement';
+import Cards from './pages/cardmanagement/Cards';
+import DeckList from './pages/cardgame/DeckList';
+import CardGame from './pages/cardgame/CardGame';
+import { Container} from './styles/AppStyles'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+const App = () => (
+  <Router>
+    <Container>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/deck-management" element={<DeckManagement />} />
+        <Route path="/cards" element={<Cards />} />
+        <Route path="/card-game" element={<DeckList />} />
+        <Route path="/cardgame/:deckId" element={<CardGame />} />
+      </Routes>
+    </Container>
+  </Router>
+);
 
 export default App;
